@@ -1,6 +1,7 @@
-This is a webpack 4 boilerplate.
+## TO DO
 
-- dev server `npm start`
-- compiles js via Babel
-- loaders for YAML, lit-html, Sass
-- Prettier & eslint on commit
+- keep track of cards
+- complete cards
+- roll/draw for card
+- keep track of generic objectives
+- mobile friendly
