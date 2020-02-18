@@ -87,6 +87,11 @@ const template = app =>
         </section>
       </section>
     </section>
+    <footer>
+      <a class="source" href="https://github.com/furka/40k-objective-cards"
+        >view source on GitHub</a
+      >
+    </footer>
   `
 
 class App {
