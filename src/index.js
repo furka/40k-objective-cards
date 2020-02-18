@@ -102,6 +102,7 @@ class App {
       }
     }
 
+    this.restore()
     this.render()
   }
 
@@ -158,7 +159,52 @@ class App {
 
   /** Updates the view */
   render() {
+    this.save()
     render(template(this), document.body)
+  }
+
+  /** save session */
+  save() {
+    const data = {
+      active: this.active,
+      cards: [...this.drawPile, ...this.hand, ...this.discardPile].map(
+        card => ({
+          index: card.index,
+          score: card.score,
+          drawn: card.isInHand,
+          discarded: card.isInDiscard,
+        }),
+      ),
+    }
+
+    sessionStorage.setItem("40k-session", JSON.stringify(data))
+  }
+
+  /** restore session */
+  restore() {
+    const data = JSON.parse(sessionStorage.getItem("40k-session"))
+
+    if (data) {
+      this.active = data.active
+
+      data.cards.reverse().forEach(data => {
+        const card = this.drawPile.find(card => card.index === data.index)
+
+        if (card) {
+          card.score = data.score
+
+          if (data.drawn) {
+            this.__remove(card, this.drawPile)
+            this.hand.unshift(card)
+          }
+
+          if (data.discarded) {
+            this.__remove(card, this.drawPile)
+            this.discardPile.unshift(card)
+          }
+        }
+      })
+    }
   }
 }
 
@@ -198,8 +244,9 @@ class Objective {
   }
 
   complete() {
-    this.modify()
-    this.app.discard(this)
+    if (this.modify()) {
+      this.app.discard(this)
+    }
   }
 
   modify() {
@@ -209,7 +256,11 @@ class Objective {
       Enter a number or dice roll. Example: d3+3
     `)
 
-    this.score = isNaN(Number(val)) ? roll.roll(val).result : Number(val)
+    if (val !== null) {
+      this.score = isNaN(Number(val)) ? roll.roll(val).result : Number(val)
+      this.app.render()
+      return true
+    }
   }
 }
 
