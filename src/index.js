@@ -257,9 +257,13 @@ class Objective {
     `)
 
     if (val !== null) {
-      this.score = isNaN(Number(val)) ? roll.roll(val).result : Number(val)
-      this.app.render()
-      return true
+      try {
+        this.score = isNaN(Number(val)) ? roll.roll(val).result : Number(val)
+        this.app.render()
+        return true
+      } catch (e) {
+        alert(`I'm sorry, I don't understand that value.`)
+      }
     }
   }
 }
