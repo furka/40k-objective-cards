@@ -1,6 +1,7 @@
 body
   background-color: #555
   color: #fff
+  margin: 0
 
 .score
   position: fixed
@@ -11,105 +12,166 @@ body
   background: #000
   border-bottom: 2px solid #fff
   font-family: fantasy
-  font-size: 20px
+  font-size: 40px
   padding: 8px
+  text-align: center
 
-.hand
-  z-index: 1
-  margin-top: 50px
-  position: relative
+.app
+  display: flex
+  flex-direction: row
+  margin-top: 64px
+  width: 100%
+  justify-content: center
 
-  .card
-    font-size: 16px
+  .deck,
+  .hand,
+  .discard
+    z-index: 1
     display: flex
     flex-direction: column
-    max-width: 440px
-    margin-bottom: 20px
+    width: 440px
+    flex-shrink: 0
+    position: relative
+    border: 2px solid #fff
+    background-color: rgba(0,0,0,.5)
 
-    header
-      display: flex
-      flex-direction: row
-      justify-content: space-between
-      z-index: 2
-
-    .card-index,
-    .card-name,
-    .card-category
-      border: 2px solid #fff
+    > header
+      border-bottom: 2px solid #fff
       padding: 8px
-      margin: 0 4px
-      border-radius: 5px
       display: flex
       align-items: center
       justify-content: center
-
-    .card-index
-      font-family: fantasy
-      background-color: #910505
-      font-size: 20px
-
-    .card-name
       font-family: fantasy
       background-color: #000
       text-transform: uppercase
       font-size: 20px
-      flex-grow: 1
+      cursor: pointer
 
-    .card-category
-      background-color: #000
-      font-style: italic
+      &:hover
+        background-color: #222
 
-    section
+    .draw
+      margin: 8px
+
+    button
+      display: flex
+      align-items: center
+      justify-content: center
+      padding: 8px 32px
+      border-radius: 5px
       border: 2px solid #fff
-      background-color: #2c3829
+      background-color: #910505
+      box-shadow: inset -5px -5px 0 0 rgba(0,0,0,.25), inset 5px 5px 0 0 rgba(255, 255, 255,.25)
+      color: #fff
+      font-size: 20px
+      text-transform: uppercase
+      cursor: pointer
+
+      &:hover
+        background-color: green
+
+    .body
       display: flex
       flex-direction: column
-      padding: 16px
-      z-index: 1
-      margin-top: -20px
-      margin-bottom: -20px
-      padding-top: 36px
-      padding-bottom: 36px
 
-      .card-fluff
-        font-style: italic
-      .card-description
-        font-family: sans-serif
-        font-size: 20px
-
-      hr
-        width: 100%
-
-    footer
-      display: flex
-      flex-direction: row
-      z-index: 2
-
-      span,
-      button
-        border: 2px solid #fff
-        padding: 8px
-        margin: 0 4px
-        border-radius: 5px
+      .card
+        font-size: 16px
         display: flex
-        align-items: center
-        justify-content: center
+        flex-direction: column
+        margin: 8px 8px 28px 8px
 
-      span
-        font-family: fantasy
-        font-size: 20px
-        background-color: #000
+        header
+          display: flex
+          flex-direction: row
+          justify-content: space-between
+          z-index: 2
 
-      button
-        font-size: 20px
-        background-color: #910505
-        color: #fff
-        cursor: pointer
-        padding: 8px 32px
-        text-transform: uppercase
+        .card-index,
+        .card-name,
+        .card-category
+          border: 2px solid #fff
+          padding: 8px
+          margin: 0 4px
+          border-radius: 5px
+          display: flex
+          align-items: center
+          justify-content: center
 
-        &:hover
-          background-color: green
+        .card-index
+          font-family: fantasy
+          background-color: #910505
+          font-size: 20px
+
+        .card-name
+          font-family: fantasy
+          background-color: #000
+          text-transform: uppercase
+          font-size: 20px
+          flex-grow: 1
+
+        .card-category
+          background-color: #000
+          font-style: italic
+
+        section
+          display: flex
+          flex-direction: column
+          position: relative
+          border: 2px solid #fff
+          background-color: #2c3829
+          padding: 16px
+          z-index: 1
+          margin-top: -20px
+          margin-bottom: -20px
+          padding-top: 36px
+          padding-bottom: 36px
+
+          .card-fluff
+            font-style: italic
+          .card-description
+            font-family: sans-serif
+            font-size: 20px
+
+          hr
+            width: 100%
+
+          .overlay
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            display: flex
+            align-items: center
+            justify-content: center
+            background-color: rgba(0,0,0,.5)
+
+            span
+              color: #5ff35f
+              font-family: fantasy
+              text-transform: uppercase
+              font-size: 40px
+              transform: rotate(-5deg)
+              border: 2px dashed #5ff35f
+              padding: 8px
+              background-color: rgba(0,0,0,.5)
+              box-shadow: 0 0 20px 10px rgba(0,0,0,.5)
+
+        footer
+          display: flex
+          flex-direction: row
+          justify-content: space-around
+          z-index: 2
+
+  @media (max-width: 1350px)
+    flex-direction: column
+
+    .deck,
+    .hand,
+    .discard
+      &:not(.active)
+        .body
+          display: none
 
 
 #card-11,

@@ -1,46 +1,34 @@
 cards:
   - index: 11
-    name: Secure objective 1
-    category: Capture and control *
-    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
-    text: Score 1 victory point if you control objective marker 1 at the end of your turn.
-    points:
-      - 1
+    name: Faction objective 1
+    category: Faction
+    fluff: This is a faction specific objective.
+    text: Check codex
   - index: 12
-    name: Secure objective 2
-    category: Capture and control *
-    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
-    text: Score 1 victory point if you control objective marker 2 at the end of your turn.
-    points:
-      - 1
+    name: Faction objective 2
+    category: Faction
+    fluff: This is a faction specific objective.
+    text: Check codex
   - index: 13
-    name: Secure objective 3
-    category: Capture and control *
-    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
-    text: Score 1 victory point if you control objective marker 3 at the end of your turn.
-    points:
-      - 1
+    name: Faction objective 3
+    category: Faction
+    fluff: This is a faction specific objective.
+    text: Check codex
   - index: 14
-    name: Secure objective 4
-    category: Capture and control *
-    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
-    text: Score 1 victory point if you control objective marker 4 at the end of your turn.
-    points:
-      - 1
+    name: Faction objective 4
+    category: Faction
+    fluff: This is a faction specific objective.
+    text: Check codex
   - index: 15
-    name: Secure objective 5
-    category: Capture and control *
-    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
-    text: Score 1 victory point if you control objective marker 5 at the end of your turn.
-    points:
-      - 1
+    name: Faction objective 5
+    category: Faction
+    fluff: This is a faction specific objective.
+    text: Check codex
   - index: 16
-    name: Secure objective 6
-    category: Capture and control *
-    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
-    text: Score 1 victory point if you control objective marker 6 at the end of your turn.
-    points:
-      - 1
+    name: Faction objective 6
+    category: Faction
+    fluff: This is a faction specific objective.
+    text: Check codex
   - index: 21
     name: Secure objective 1
     category: Take and hold
