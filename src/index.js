@@ -1,6 +1,5 @@
 import "core-js/stable"
 import "regenerator-runtime/runtime"
-
 import "index.sass"
 import { html, render } from "lit-html"
 import config from "config.yaml"
@@ -48,44 +47,7 @@ const cardTemplate = card => html`
 const template = app =>
   html`
     <section class="app">
-      <header class="score">
-        <span>Score:</span>
-        <span>${app.score}</span>
-      </header>
-
-      <section class="deck ${app.active === "deck" ? "active" : ""}">
-        <header @click=${() => app.view("deck")}>
-          Deck (${app.drawPile.length})
-        </header>
-        <section class="body">
-          <div class="cards">
-            ${app.drawPile.map(card => cardTemplate(card))}
-          </div>
-        </section>
-      </section>
-      <section class="hand  ${app.active === "hand" ? "active" : ""}">
-        <header @click=${() => app.view("hand")}>
-          Hand (${app.hand.length})
-        </header>
-        <section class="body">
-          <button class="draw" @click=${() => app.draw()}>
-            + Draw new objective +
-          </button>
-          <div class="cards">
-            ${app.hand.map(card => cardTemplate(card))}
-          </div>
-        </section>
-      </section>
-      <section class="discard  ${app.active === "discard" ? "active" : ""}">
-        <header @click=${() => app.view("discard")}>
-          Discard (${app.discardPile.length})
-        </header>
-        <section class="body">
-          <div class="cards">
-            ${app.discardPile.map(card => cardTemplate(card))}
-          </div>
-        </section>
-      </section>
+      ${app.faction ? pilesTemplate(app) : factionSelectionTemplate(app)}
     </section>
     <footer>
       <a class="source" href="https://github.com/furka/40k-objective-cards"
@@ -94,6 +56,63 @@ const template = app =>
     </footer>
   `
 
+const pilesTemplate = app => html`
+  <header class="top-bar">
+    <span>${app.faction}:</span>
+    <span>${app.score}</span>
+  </header>
+  <section class="deck ${app.active === "deck" ? "active" : ""}">
+    <header @click=${() => app.view("deck")}>
+      Deck (${app.drawPile.length})
+    </header>
+    <section class="body">
+      <div class="cards">
+        ${app.drawPile.map(card => cardTemplate(card))}
+      </div>
+    </section>
+  </section>
+  <section class="hand  ${app.active === "hand" ? "active" : ""}">
+    <header @click=${() => app.view("hand")}>
+      Hand (${app.hand.length})
+    </header>
+    <section class="body">
+      <button class="draw" @click=${() => app.draw()}>
+        + Draw new objective +
+      </button>
+      <div class="cards">
+        ${app.hand.map(card => cardTemplate(card))}
+      </div>
+    </section>
+  </section>
+  <section class="discard  ${app.active === "discard" ? "active" : ""}">
+    <header @click=${() => app.view("discard")}>
+      Discard (${app.discardPile.length})
+    </header>
+    <section class="body">
+      <div class="cards">
+        ${app.discardPile.map(card => cardTemplate(card))}
+      </div>
+    </section>
+  </section>
+`
+
+const factionSelectionTemplate = app => html`
+  <header class="top-bar">
+    <span>Select faction</span>
+  </header>
+  <section class="faction-selection">
+    <button @click=${() => app.selectFaction("score")}>— none —</button>
+    ${app.factions.sort().map(
+      faction =>
+        html`
+          <button class="faction" @click=${() => app.selectFaction(faction)}>
+            ${faction}
+          </button>
+        `,
+    )}
+  </section>
+`
+
 class App {
   constructor() {
     this.drawPile = []
@@ -101,14 +120,28 @@ class App {
     this.discardPile = []
     this.active = "hand"
 
-    for (let i = 1; i <= 6; i++) {
-      for (let j = 1; j <= 6; j++) {
-        this.drawPile.push(new Objective(`${i}${j}`, this))
-      }
-    }
-
     this.restore()
     this.render()
+  }
+
+  get factions() {
+    return Object.keys(config).filter(faction => faction !== "cards")
+  }
+
+  /** selects a faction and initializes its deck */
+  selectFaction(faction) {
+    this.faction = faction
+    this._createDeck()
+    this.render()
+  }
+
+  /** Creates a deck of a specific faction */
+  _createDeck() {
+    for (let i = 1; i <= 6; i++) {
+      for (let j = 1; j <= 6; j++) {
+        this.drawPile.push(new Objective(`${i}${j}`, this.faction, this))
+      }
+    }
   }
 
   /** Removes a card from a pile */
@@ -124,7 +157,13 @@ class App {
     this.__remove(card, this.hand)
     this.__remove(card, this.discardPile)
     to.unshift(card)
+
+    if (to === this.drawPile) {
+      this.drawPile.sort((a, b) => a.index - b.index)
+    }
+
     this.render()
+    window.scrollTo(0, 0)
   }
 
   view(pile) {
@@ -164,14 +203,23 @@ class App {
 
   /** Updates the view */
   render() {
-    this.save()
     render(template(this), document.body)
+
+    if (this.faction) {
+      this.save()
+      document.title = `${this.faction.toUpperCase()}: ${this.score}`
+    }
+  }
+
+  get saveStateKey() {
+    return "40k-session"
   }
 
   /** save session */
   save() {
     const data = {
       active: this.active,
+      faction: this.faction,
       cards: [...this.drawPile, ...this.hand, ...this.discardPile].map(
         card => ({
           index: card.index,
@@ -182,15 +230,18 @@ class App {
       ),
     }
 
-    sessionStorage.setItem("40k-session", JSON.stringify(data))
+    sessionStorage.setItem(this.saveStateKey, JSON.stringify(data))
   }
 
   /** restore session */
   restore() {
-    const data = JSON.parse(sessionStorage.getItem("40k-session"))
+    const data = JSON.parse(sessionStorage.getItem(this.saveStateKey))
 
     if (data) {
       this.active = data.active
+      this.faction = data.faction
+
+      this._createDeck()
 
       data.cards.reverse().forEach(data => {
         const card = this.drawPile.find(card => card.index === data.index)
@@ -214,14 +265,22 @@ class App {
 }
 
 class Objective {
-  constructor(index, app) {
+  constructor(index, faction, app) {
     this.app = app
     this.score = 0
 
-    Object.assign(
-      this,
-      config.cards.find(card => card.index == index),
-    )
+    let data
+
+    // attempt to get faction specific card
+    if (faction && config[faction]) {
+      data = config[faction].find(card => card.index == index)
+    }
+
+    if (!data) {
+      data = config.cards.find(card => card.index == index)
+    }
+
+    Object.assign(this, data)
   }
 
   get isInHand() {
@@ -255,11 +314,14 @@ class Objective {
   }
 
   modify() {
-    const val = prompt(`
+    const val = prompt(
+      `
       How many points were scored?
 
       Enter a number or dice roll. Example: d3+3
-    `)
+    `,
+      this.points,
+    )
 
     if (val !== null) {
       try {

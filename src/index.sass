@@ -3,7 +3,7 @@ body
   color: #fff
   margin: 0
 
-.score
+.top-bar
   position: fixed
   z-index: 2
   top: 0
@@ -15,7 +15,7 @@ body
   font-size: 40px
   padding: 8px
   text-align: center
-
+  text-transform: uppercase
 
 footer
   display: flex
@@ -34,6 +34,35 @@ footer
   margin-top: 64px
   width: 100%
   justify-content: center
+
+  button
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 8px 32px
+    border-radius: 5px
+    border: 2px solid #fff
+    background-color: #910505
+    box-shadow: inset -5px -5px 0 0 rgba(0,0,0,.25), inset 5px 5px 0 0 rgba(255, 255, 255,.25)
+    color: #fff
+    font-size: 20px
+    text-transform: uppercase
+    cursor: pointer
+    fill: #fff
+
+    &:hover
+      background-color: green
+
+  .faction-selection
+    margin-top: 8px
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+
+    button
+      margin: 8px
+      position: relative
 
   .deck,
   .hand,
@@ -66,22 +95,6 @@ footer
     .draw
       margin: 8px
 
-    button
-      display: flex
-      align-items: center
-      justify-content: center
-      padding: 8px 32px
-      border-radius: 5px
-      border: 2px solid #fff
-      background-color: #910505
-      box-shadow: inset -5px -5px 0 0 rgba(0,0,0,.25), inset 5px 5px 0 0 rgba(255, 255, 255,.25)
-      color: #fff
-      font-size: 20px
-      text-transform: uppercase
-      cursor: pointer
-
-      &:hover
-        background-color: green
 
     .body
       display: flex
@@ -141,6 +154,8 @@ footer
 
           .card-fluff
             font-style: italic
+            opacity: 0.8
+
           .card-description
             font-family: sans-serif
             font-size: 20px
@@ -186,6 +201,15 @@ footer
       &:not(.active)
         .body
           display: none
+
+  @media (min-width: 1351px)
+    .deck,
+    .discard
+      transition: opacity .25s, filter .25s
+
+      &:not(:hover)
+        opacity: .5
+        filter: grayscale(100%) contrast(200%)
 
 
 #card-11,

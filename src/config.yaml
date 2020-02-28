@@ -1,34 +1,111 @@
+necrons:
+  - index: 11
+    name: Endless legions
+    category: Necrons
+    fluff: The enemy cannot hope to win a war of attrition against you; watch the foe’s joy at slaying your minions turn to dismay as the warriors of your legions reanimate before their eyes to continue the fight.
+    text: Whilst this Tactical Objective is active, keep a tally of the total number of successful Reanimation Protocols rolls you make. Score 1 victory point if the tally reaches 10.
+    points: 1
+  - index: 12
+    name: Dust and ashes
+    category: Necrons
+    fluff: The Necrons have seen civilisations rise and fall and the stars burn themselves black. Some enemies only need to be outlived to be ultimately defeated.
+    text: When this Tactical Objective is generated, nominate a NECRONS CHARACTER from your army. Score 1 victory point at the end of the game if this character is alive and on the battlefield.
+    points: 1
+  - index: 13
+    name: Reclaim and recapture
+    category: Necrons
+    fluff: Using hyperbinaric logic, key strategic targets have been identified. Your legions must reclaim them at all costs.
+    text: Roll a D6 when this Tactical Objective is generated. If the result is an odd number, score D3 victory points if you control all 3 odd numbered Objective Markers at the end of this turn. If the result is an even number, score D3 victory points if you control all 3 even-numbered Objective Markers at the end of this turn.
+  - index: 14
+    name: Age of the machine
+    category: Necrons
+    fluff: The crude war machines of the lesser races are an affront to the technological supremacy of the Necrons. Exterminate them.
+    text: Score 1 victory point if at least one enemy VEHICLE model was destroyed during this turn. If at least 3 enemy VEHICLE models were destroyed during this turn, score D3 victory points instead. If any of the destroyed vehicles was TITANIC, score an additional 3 victory points.
+  - index: 15
+    name: Slaughter the living
+    category: Necrons
+    fluff: The young races cling to their primitive bodies of flesh and blood. Slaughter them like the animals they are, and reduce their corpses to their constituent atoms.
+    text: Score 1 victory point if at least one enemy unit was completely destroyed during this turn.
+    points: 1
+  - index: 16
+    name: Code of combat
+    category: Necrons
+    fluff: Though the civilisations of today are little more than barbarians, the ancient codes of honourable combat must still be upheld.
+    text: Score 1 victory point if a NECRONS CHARACTER killed an enemy CHARACTER during the Fight phase of this turn.
+    points: 1
+
+"astra militarum":
+  - index: 11
+    name: Overkill
+    category: Astra militarum
+    fluff: The tanks of the Imperial Guard are thunderous in their wrath. Their every kill is a statement of superior firepower.
+    text: Score 1 victory point if an ASTRA MILITARUM VEHICLE unit from your army destroyed an enemy unit during this turn. If an ASTRA MILITARUM TITANIC Vehicle unit from your army destroyed an enemy unit during this turn, score D3 victory points instead.
+  - index: 12
+    name: Regimental pride
+    category: Astra militarum
+    fluff: Each regiment has a long and storied history of battle lore – those added to the annals of fame due to exceptional acts of valour are counted amongst the finest of heroes.
+    text: Score 1 victory point if an enemy CHARACTER was slain as a result of an attack made by one of your <REGIMENT> CHARACTERS during this turn.
+    points: 1
+  - index: 13
+    name: Chain of command
+    category: Astra militarum
+    fluff: The central nervous system of the Astra Militarum is its command structure – those who efficiently coordinate their platoons through decisive and well-timed commands can clinch a lasting victory.
+    text: Score 1 victory point if you issued 3-5 different orders or tank orders this turn. If you issued 6 or more different orders or tank orders this turn, score D3 victory points instead.
+  - index: 14
+    name: Troops on the ground
+    category: Astra militarum
+    fluff: The endless ranks of the Astra Militarum come into their own when deployed en masse – when several platoons march forth to claim the field as one, there are few foes that can wrest it from their grip.
+    text: Score D3 victory points if you control 3-5 objective markers with Infantry units. If you control all 6 objective markers with Infantry units, score D3+3 victory points instead.
+  - index: 15
+    name: Hammer of the emperor
+    category: Astra militarum
+    fluff: The sledgehammer force of an Imperial Guard assault can blast an enemy from a defended position in the matter of a few heartbeats. Those that witness such brute force cannot help but be in awe.
+    text: Score 1 victory point if you destroyed an enemy unit that was controlling an objective marker at the start of the turn.
+    points: 1
+  - index: 16
+    name: Death from afar
+    category: Astra militarum
+    fluff: Many a battle has been won from extreme range; those foes that lurk out of the reach of the rank-and-file are brought to a violent end by heavy weapons, turret guns and mobile artillery.
+    text: Score 1 victory point if an enemy unit that was wholly within their deployment zone at the start of the turn was destroyed by a unit wholly within your deployment zone during this turn.
+    points: 1
+
 cards:
   - index: 11
-    name: Faction objective 1
-    category: Faction
-    fluff: This is a faction specific objective.
-    text: Check codex
+    name: Secure objective 1
+    category: Capture and control
+    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
+    text: Score 1 victory point if you control objective marker 1 at the end of your turn.
+    points: 1
   - index: 12
-    name: Faction objective 2
-    category: Faction
-    fluff: This is a faction specific objective.
-    text: Check codex
+    name: Secure objective 2
+    category: Capture and control
+    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
+    text: Score 1 victory point if you control objective marker 2 at the end of your turn.
+    points: 1
   - index: 13
-    name: Faction objective 3
-    category: Faction
-    fluff: This is a faction specific objective.
-    text: Check codex
+    name: Secure objective 3
+    category: Capture and control
+    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
+    text: Score 1 victory point if you control objective marker 3 at the end of your turn.
+    points: 1
   - index: 14
-    name: Faction objective 4
-    category: Faction
-    fluff: This is a faction specific objective.
-    text: Check codex
+    name: Secure objective 4
+    category: Capture and control
+    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
+    text: Score 1 victory point if you control objective marker 4 at the end of your turn.
+    points: 1
   - index: 15
-    name: Faction objective 5
-    category: Faction
-    fluff: This is a faction specific objective.
-    text: Check codex
+    name: Secure objective 5
+    category: Capture and control
+    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
+    text: Score 1 victory point if you control objective marker 5 at the end of your turn.
+    points: 1
   - index: 16
-    name: Faction objective 6
-    category: Faction
-    fluff: This is a faction specific objective.
-    text: Check codex
+    name: Secure objective 6
+    category: Capture and control
+    fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
+    text: Score 1 victory point if you control objective marker 6 at the end of your turn.
+    points: 1
   - index: 21
     name: Secure objective 1
     category: Take and hold
@@ -41,211 +118,159 @@ cards:
     category: Take and hold
     fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
     text: Score 1 victory point if you control objective marker 2 at the end of your turn.
-    points:
-      - 1
+    points: 1
   - index: 23
     name: Secure objective 3
     category: Take and hold
     fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
     text: Score 1 victory point if you control objective marker 3 at the end of your turn.
-    points:
-      - 1
+    points: 1
   - index: 24
     name: Secure objective 4
     category: Take and hold
     fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
     text: Score 1 victory point if you control objective marker 4 at the end of your turn.
-    points:
-      - 1
+    points: 1
   - index: 25
     name: Secure objective 5
     category: Take and hold
     fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
     text: Score 1 victory point if you control objective marker 5 at the end of your turn.
-    points:
-      - 1
+    points: 1
   - index: 26
     name: Secure objective 6
     category: Take and hold
     fluff: A vital objective has been identified in your vicinity. You are ordered to hold it at any cost.
     text: Score 1 victory point if you control objective marker 6 at the end of your turn.
-    points:
-      - 1
+    points: 1
   - index: 31
     name: Defend objective 1
     category: Storm and defend
     fluff: You are charged with the defence of a key objective. It must not be permitted to fall into enemy hands.
     text: Score 2 victory points if you control objective marker 1 at the end of two consecutive turns.
-    points:
-      - 2
+    points: 2
   - index: 32
     name: Defend objective 2
     category: Storm and defend
     fluff: You are charged with the defence of a key objective. It must not be permitted to fall into enemy hands.
     text: Score 2 victory points if you control objective marker 2 at the end of two consecutive turns.
-    points:
-      - 2
+    points: 2
   - index: 33
     name: Defend objective 3
     category: Storm and defend
     fluff: You are charged with the defence of a key objective. It must not be permitted to fall into enemy hands.
     text: Score 2 victory points if you control objective marker 3 at the end of two consecutive turns.
-    points:
-      - 2
+    points: 2
   - index: 34
     name: Defend objective 4
     category: Storm and defend
     fluff: You are charged with the defence of a key objective. It must not be permitted to fall into enemy hands.
     text: Score 2 victory points if you control objective marker 4 at the end of two consecutive turns.
-    points:
-      - 2
+    points: 2
   - index: 35
     name: Defend objective 5
     category: Storm and defend
     fluff: You are charged with the defence of a key objective. It must not be permitted to fall into enemy hands.
     text: Score 2 victory points if you control objective marker 5 at the end of two consecutive turns.
-    points:
-      - 2
+    points: 2
   - index: 36
     name: Defend objective 6
     category: Storm and defend
     fluff: You are charged with the defence of a key objective. It must not be permitted to fall into enemy hands.
     text: Score 2 victory points if you control objective marker 6 at the end of two consecutive turns.
-    points:
-      - 2
+    points: 2
   - index: 41
     name: Advance
     category: Seize ground
     fluff: You must advance swiftly into no man’s land to prevent your opponent seizing the battlefield.
     text: Score 1 victory point if no unit from your army is within your deployment zone at the end of your turn.
-    points:
-      - 1
+    points: 1
   - index: 42
     name: Behind enemy lines
     category: Seize ground
     fluff: Break through the foe’s army and cut off their lines of escape.
     text: Score 1 victory point if you have at least one unit completely within the enemy’s deployment zone at the end of your turn. If you have at least three units within your opponent’s deployment zone at the end of your turn, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 43
     name: Hold the line
     category: Seize ground
     fluff: It is critical that no foe breaks through your defences. Maintain a strong rearguard to protect your supply lines.
     text: Score 1 victory point if you have at least three units completely within your deployment zone, and your opponent has no models within your deployment zone, at the end of your turn. This objective cannot be achieved on your first turn.
-    points:
-      - 1
+    points: 1
   - index: 44
     name: Mission critical objective
     category: Seize ground
     fluff: This area is of extreme importance. You are to lead an immediate all-out assault to capture it.
     text: When this Tactical Objective is generated, roll a D6. Score 1 victory point if you control the corresponding objective marker. If the corresponding objective marker was controlled by your opponent at the start of your turn and you control it at the end of your turn, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 45
     name: Supremacy
     category: Seize ground
     fluff: The battleground is won one yard at a time. Continue to establish a strong military presence in the area.
     text: Score D3 victory points if you control any three objective markers at the end of your turn.
-    points:
-      - d3
   - index: 46
     name: Domination
     category: Seize ground
     fluff: Dominate the field of battle. Storm every site of tactical import and leave the foe with no place to hide.
     text: Score D3+3 victory points if you control every objective marker on the battlefield at the end of your turn.
-    points:
-      - d3+3
   - index: 51
     name: Overwhelming firepower
     category: Purge
     fluff: A show of strength is required. Scour the enemy from the face of the battlefield with the use of extreme firepower.
     text: Score 1 victory point if an enemy unit was destroyed during the Shooting phase of your turn. If 3 or more enemy units were destroyed during the Shooting phase of your turn, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 52
     name: Blood and guts
     category: Purge
     fluff: Close with the foe and engage them in hand-to-hand combat. Show them no quarter, no mercy.
     text: Score 1 victory point if an enemy unit was destroyed during the Fight phase of this turn. If 3 or more enemy units were destroyed during the Fight phase of this turn, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 53
     name: No prisoners
     category: Purge
     fluff: Exterminate your enemy, show them no mercy.
     text: Score 1 victory point if an enemy unit was destroyed during your turn. If between 3 and 5 enemy units were destroyed during your turn, score D3 victory points instead. If 6 or more enemy units were destroyed during your turn, score D3+3 victory points instead.
-    points:
-      - 1
-      - d3
-      - d3+3
   - index: 54
     name: Area denial
     category: Purge
     fluff: It is critical that this area is dominated. No enemy vanguard or guerilla units can be allowed to disrupt our plans.
     text: Score 1 victory point if there are no enemy models within 6" of the centre of the battlefield at the end of your turn. If there are no enemy models within 12" of the centre of the battlefield at the end of your turn, score D3 victory points instead.
-    points:
-      - d3
   - index: 55
     name: Psychological warfare
     category: Purge
     fluff: Break the enemy’s morale, make your foes tremble before you.
     text: Score 1 victory point if your opponent failed a Morale test during this turn. If your opponent failed 3 or more Morale tests, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 56
     name: Master the warp
     category: Purge
     fluff: Desperate times call for desperate measures – harness the power of the warp to defeat your foes.
     text: Score 1 victory point if you manifested or denied a psychic power during this turn. If you manifested or denied 3 or more psychic powers, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 61
     name: Kingslayer
     category: Priority order
     fluff: The enemy commander is a powerful and effective leader and should be slain as quickly as possible.
     text: Score D3 victory points if your opponent’s Warlord has been destroyed during this or any previous turn.
-    points:
-      - d3
   - index: 62
     name: Witch hunter
     category: Priority order
     fluff: The presence of enemy psykers can no longer be tolerated. Eliminate them with extreme prejudice.
     text: Score 1 victory point if at least one enemy PSYKER was destroyed during this turn.
-    points:
-      - 1
+    points: 1
   - index: 63
     name: Scour the skies
     category: Priority order
     fluff: It is vital to maintain air superiority.
     text: Score 1 victory point if at least one enemy unit that can FLY was destroyed during this turn.
-    points:
-      - 1
+    points: 1
   - index: 64
     name: Assassinate
     category: Priority order
     fluff: The enemy looks to their champions for courage. Identify and assassinate them.
     text: Score 1 victory point if at least one enemy CHARACTER was destroyed during this turn. If 3 or more enemy CHARACTERS were destroyed during this turn, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 65
     name: Big game hunter
     category: Priority order
     fluff: The larger the foe, the greater the glory…
     text: Score 1 victory point if at least one enemy unit with a Wounds characteristic of 10 or more was destroyed during this turn. If at least one enemy unit with a Wounds characteristic of 20 or more was destroyed this turn, score D3 victory points instead.
-    points:
-      - 1
-      - d3
   - index: 66
     name: Priority orders received
     category: Priority order
     fluff: This mission is of the utmost importance, and cannot be entrusted to anyone else.
     text: When this Tactical Objective is generated, immediately generate a bonus Tactical Objective – this does not count towards the number of Active Tactical Objectives you currently have in play. Your Warlord is the only unit that can be used to achieve the bonus Tactical Objective – they must be the only unit used to control an objective marker, the unit that destroys the last model in an enemy unit, and so on. If you achieve this, you score both the number of victory points stated on the bonus Tactical Objective and an additional 3 victory points. If this Tactical Objective is discarded, so too is the bonus Tactical Objective.
-    points:
-      - 3
+    points: 3
