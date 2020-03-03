@@ -14,8 +14,12 @@ const cardTemplate = card => html`
       <span class="card-category">${card.category}</span>
     </header>
     <section>
-      <span class="card-fluff">${card.fluff}</span>
-      <hr />
+      ${card.fluffy
+        ? html`
+            <span class="card-fluff">${card.fluff}</span>
+            <hr />
+          `
+        : ""}
       <span class="card-description">${card.text}</span>
       ${card.score
         ? html`
@@ -50,6 +54,10 @@ const template = app =>
       ${app.faction ? pilesTemplate(app) : factionSelectionTemplate(app)}
     </section>
     <footer>
+      <a class="source" @click=${() => app.toggleFluff()}
+        >${app.fluffy ? "hide fluff" : "show fluff"}</a
+      >
+      &nbsp;|&nbsp;
       <a class="source" href="https://github.com/furka/40k-objective-cards"
         >view source on GitHub</a
       >
@@ -119,6 +127,7 @@ class App {
     this.hand = []
     this.discardPile = []
     this.active = "hand"
+    this.fluffy = true
 
     this.restore()
     this.render()
@@ -132,6 +141,11 @@ class App {
   selectFaction(faction) {
     this.faction = faction
     this._createDeck()
+    this.render()
+  }
+
+  toggleFluff() {
+    this.fluffy = !this.fluffy
     this.render()
   }
 
@@ -220,6 +234,7 @@ class App {
     const data = {
       active: this.active,
       faction: this.faction,
+      fluffy: this.fluffy,
       cards: [...this.drawPile, ...this.hand, ...this.discardPile].map(
         card => ({
           index: card.index,
@@ -240,6 +255,7 @@ class App {
     if (data) {
       this.active = data.active
       this.faction = data.faction
+      this.fluffy = data.fluffy
 
       this._createDeck()
 
@@ -297,6 +313,10 @@ class Objective {
 
   get canBeFaction() {
     return this.index < 20
+  }
+
+  get fluffy() {
+    return this.app.fluffy
   }
 
   draw() {
